@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>
+        GSU Poster - Dashboard
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/dashboard.css') }}">
+    <link rel="icon" type="image/x-icon" href="images/Panther.png">
+</head>
+
+    <body>
+        <div class="container">
+            <h1>Hello {{session.name}}<br>Welcome to your Dashboard</h1>
+        </div>
+        <div class="container2">
+            <div class="portion1"><a href="{{ url_for('judge_homepage_scores') }}"><button type="button">Top Scores</button></a></div>
+
+			<div class="portion2"><a href="{{ url_for('judge_homepage_rubric') }}"><button type="button">Rubric</button></a></div>
+            <div class="portion3"><a href="{{ url_for('judge_homepage_grade') }}"><button type="button">Judge some posters!</button></a></div>
+            <div class="portion4"><a href="{{ url_for('home') }}"><button type="button">Logout</button></a></div>
+        </div>
+    </body>
+</html>

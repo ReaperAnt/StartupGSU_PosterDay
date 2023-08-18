@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>
+        GSU Poster - Top Scores
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="icon" type="image/x-icon" href = "{{ url_for('static', filename= 'images/Panther.png') }}">
+</head>
+
+    <body>
+        <div class="container">
+            <h1>
+                The current TOP SCORES look like this!<br>
+                Congratulations to {{ scoreInfo[0][1] }} {{ scoreInfo[0][2] }}, who currently ranks as the winner!
+            </h1>
+        </div>
+        <div class="container2">
+            <div class="portion1"><button type="button" onclick="history.back()">Back to your Dashboard</button></div>
+            <div class="portion3"><a href="{{ url_for('home') }}"><button type="button">Logout</button></a></div>
+        </div>
+        <div class="TopScores">
+            <h1>These are the students with the best posters:</h1>
+            <h2>
+            <div class="StudentScores">
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student Name</th>
+                        <th>Score</th>
+                    </tr>
+                    {% for i in scoreInfo %}
+                        {% if i[5] > 0 %}
+                        <tr>
+                            <td>3</td>
+                            <td>{{ i[1] }} {{ i[2] }}</td>
+                            <td>{{ i[5] }}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            </h2>
+        </div>
+    </body>
+</html>

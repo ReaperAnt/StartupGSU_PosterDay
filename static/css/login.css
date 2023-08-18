@@ -1,0 +1,76 @@
+html {
+	background: #2e2a36;
+}
+body{
+    text-align: center;
+}
+input[type=radio]{
+    margin-bottom:50px;
+}
+input[type=text], input[type=password] {
+    background-color:transparent;
+    text-align: center;
+	padding: 12px 20px;
+	margin: 10px;
+	border: 2px solid black;
+    border-radius:45px;
+}
+
+button {
+	background-color: #0f5298;
+	color: white;
+	padding: 16px 20px;
+	margin: 10px;
+	cursor: pointer;
+}
+input[type=text]:focus, input[type=password]:focus{
+   outline:2px solid green;
+}
+.container{
+    display: grid;
+    min-height: 45vh;
+    place-content: center;
+    text-align: center;
+}
+.container2 {
+    display:inline-block;
+	padding: 16px;
+    border: 0px solid red;
+    border-radius: 45px;
+    background: linear-gradient(90deg, rgba(2,0,36,0.5578606442577031) 0%, rgba(248,248,255,1) 35%, rgba(0,212,255,1) 100%);
+}
+button{
+    color:black;
+    border-radius: 45px;
+}
+a:visited{
+    text-decoration:solid;
+    color:black;
+}
+button:hover{
+    background-color: green;
+}
+.container2 h2{
+    display:inline-block;
+    text-align: center;
+    background-color:transparent;
+	padding: 12px 20px;
+	margin: 10px;
+	border: 0px solid black;
+    border-radius:45px;
+}
+
+.container2 h3{
+    display:inline-block;
+    text-align: center;
+    background-color:transparent;
+	padding: 12px 20px;
+	margin: 10px;
+	border: 2px solid black;
+    border-radius:45px;
+}
+
+.container3{
+    display:flex;
+    justify-content: center;
+}

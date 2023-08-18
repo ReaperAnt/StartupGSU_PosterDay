@@ -1,0 +1,11 @@
+html{
+    background: #2e2a36;
+    text-align: center;
+  }
+  a{
+    color:powderblue
+  }
+  a:visited{
+    text-decoration:solid;
+    color:powderblue;
+}

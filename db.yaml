@@ -1,0 +1,4 @@
+mysql_host: 'database-1.cz8gm2vwnnwa.us-east-2.rds.amazonaws.com'
+mysql_user: 'admin'
+mysql_password: 'Ip6lP3Uqs35FazPNbD43'
+mysql_db: 'user'

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>GSU Poster - Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename= 'images/Panther.png') }}">
+	</head>
+	<body>
+        <img src="static/images/logo.png" alt="logo" width="200" height="200">
+		<div class="container">
+			<h1>Log in to continue</h1>
+			<div class="container2">
+				<h3>
+					<form method="POST" action="">
+
+					<label for="email">Email </label><br>
+					<input type="text" id="email" name="email" placeholder="Your Email" value="{{request.form.username}}"><br>
+
+					<label for="pword">Password </label><br>
+					<input type="password" id="pword" name="pword" placeholder="Your Password" value="{{request.form.password}}"><br>
+
+					<button type="submit">Login</button>
+
+					</form>
+				</h3>
+			</div>
+		</div>
+	</body>
+</html>

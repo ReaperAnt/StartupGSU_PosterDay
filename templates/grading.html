@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+
+<head>
+    <title>
+        GSU Poster - Judge Grading
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grading.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename= 'images/Panther.png') }}">
+</head>
+
+    <body>
+        <div class="container1">
+            <div class="portion3"><button type="button" onclick="history.back()">Back to Dashboard</button></div>
+            <div class="portion4"><a href="{{ url_for('home') }}"><button type="button">Logout</button></a></div>
+        </div>
+
+        <div class="rubric">
+            <table>
+                <tr>
+                    <th><h3>Excellent</h3></th>
+                    <th><h3>Good</h3></th>
+                    <th><h3>Neutral</h3></th>
+                    <th><h3>Bad</h3></th>
+                    <th><h3>Very Bad</h3></th>
+                </tr>
+                <tr>
+                    <td>Student was able to answer all questions presented by the judge.</td>
+                    <td>Most questions were answered well enough.</td>
+                    <td>Some questions answered perfectly, others not.</td>
+                    <td>Student was very vague with their answers.</td>
+                    <td>Student could not provide answers or explanation.s</td>
+                </tr>
+                <tr>
+                    <td>Student gave an interactive and engaging presentation.</td>
+                    <td>Students presentation was great with very few mistakes.</td>
+                    <td>Presentation was good, but missing many minor details.</td>
+                    <td>Student was not energetic enough or missing info.</td>
+                    <td>Student hardly put in effort, read off a paper/slides verbatim.</td>
+                </tr>
+                <tr>
+                    <td>Student's content was correct.</td>
+                    <td>Very few errors with their knowledge/content/idea.</td>
+                    <td>Student had major details correct.</td>
+                    <td>Content/Info was partially correct.</td>
+                    <td>Content/Info was outdated or wrong.</td>
+                </tr>
+                <tr>
+                    <td>Student's poster was creative, rich, and colorful.</td>
+                    <td>Poster was organized and pretty, but not unique.</td>
+                    <td>Poster was not appealing, but provided key details/info.</td>
+                    <td>Poster was not appealing or organized, but had most necessary info.</td>
+                    <td>Poster was hard to read and bland.</td>
+                </tr>
+            </table>
+        </div>
+
+            <div class="dropdown">
+                <button onclick="toggleShow()" class="dropbtn">Pick a Student   🢃</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search by name" id="search" onkeyup="filter()">
+                    {% for i in liststudents %}
+                        {% if i[5] == -1 %}
+                            <a onclick="getName('{{ i[1] }} {{ i[2] }}')"><label>{{ i[1] }} {{ i[2] }}</label></a>
+                        {% endif %}
+                    {% endfor %}
+				</div>
+			</div>
+
+            <div class="questions">
+                <h2>
+                    <span id="student"></span><br>
+                    <span id="aggscore"></span>
+                </h2>
+            </div>
+
+            <div class="Poster">
+                <div class="PosterImage">
+                    STUDENT POSTER PLACEHOLDER
+                </div>
+            </div>
+
+            <div class="questions">
+                <h2>Please refer to the parameters above to assign scores...</h2><br><br>
+                How did the student respond to questions?<br>
+                <input type="radio" name="q1" value="5" onclick="sumPoints()">
+                <label>5</label>
+                <input type="radio" name="q1" value="4" onclick="sumPoints()">
+                <label>4</label>
+                <input type="radio" name="q1" value="3" onclick="sumPoints()">
+                <label>3</label>
+                <input type="radio" name="q1" value="2" onclick="sumPoints()">
+                <label>2</label>
+                <input type="radio" name="q1" value="1" onclick="sumPoints()">
+                <label>1</label>
+                <br><br>
+                How was the overall presentation?<br>
+                <input type="radio" name="q2" value="5" onclick="sumPoints()">
+                <label>5</label>
+                <input type="radio" name="q2" value="4" onclick="sumPoints()">
+                <label>4</label>
+                <input type="radio" name="q2" value="3" onclick="sumPoints()">
+                <label>3</label>
+                <input type="radio" name="q2" value="2" onclick="sumPoints()">
+                <label>2</label>
+                <input type="radio" name="q2" value="1" onclick="sumPoints()">
+                <label>1</label>
+                <br><br>
+                Was the information presented by the student correct?<br>
+                <input type="radio" name="q3" value="5" onclick="sumPoints()">
+                <label>5</label>
+                <input type="radio" name="q3" value="4" onclick="sumPoints()">
+                <label>4</label>
+                <input type="radio" name="q3" value="3" onclick="sumPoints()">
+                <label>3</label>
+                <input type="radio" name="q3" value="2" onclick="sumPoints()">
+                <label>2</label>
+                <input type="radio" name="q3" value="1" onclick="sumPoints()">
+                <label>1</label>
+                <br><br>
+                How well was the poster and/or presentation organised?<br>
+                <input type="radio" name="q4" value="5" onclick="sumPoints()">
+                <label>5</label>
+                <input type="radio" name="q4" value="4" onclick="sumPoints()">
+                <label>4</label>
+                <input type="radio" name="q4" value="3" onclick="sumPoints()">
+                <label>3</label>
+                <input type="radio" name="q4" value="2" onclick="sumPoints()">
+                <label>2</label>
+                <input type="radio" name="q4" value="1" onclick="sumPoints()">
+                <label>1</label>
+                <br><br>
+            </div>
+
+        <form method="POST" action="">
+            <input type="hidden" id="rawname" name="rawname" value=""></input>
+            <input type="hidden" id="rawscore" name="rawscore" value=""></input>
+            <div class="rateSubmit">
+                <button type="submit" name="button" id="button" onclick="submitConfirmation()"> Submit</button>
+            </div>
+        </form>
+
+        <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function toggleShow() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function filter() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for(i = 0; i < a.length; i++) {
+                txtValue = a[i].text.Content || a[i].innerText;
+                if(txtValue.toUpperCase().indexOf(filter) > -1)
+                    a[i].style.display = "";
+                else
+                    a[i].style.display = "none";
+            }
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn') && !event.target.matches('#search')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+          }
+        }
+
+        function submitConfirmation() {
+            alert("Score submitted successfully. Redirecting to Dashboard...");
+        }
+
+        function sumPoints() {
+            q1_pts = document.getElementsByName("q1");
+            q2_pts = document.getElementsByName("q2");
+            q3_pts = document.getElementsByName("q3");
+            q4_pts = document.getElementsByName("q4");
+            sum = 0;
+            for(i = 0; i < q1_pts.length; i++) {
+                if(q1_pts[i].checked)
+                    sum += parseInt(q1_pts[i].value);
+            }
+            for(i = 0; i < q2_pts.length; i++) {
+                if(q2_pts[i].checked)
+                    sum += parseInt(q2_pts[i].value);
+            }
+            for(i = 0; i < q3_pts.length; i++) {
+                if(q3_pts[i].checked)
+                    sum += parseInt(q3_pts[i].value);
+            }
+            for(i = 0; i < q4_pts.length; i++) {
+                if(q4_pts[i].checked)
+                    sum += parseInt(q4_pts[i].value);
+            }
+            document.getElementById("rawscore").value = sum;
+            document.getElementById("aggscore").innerHTML = "Score: " + sum;
+        }
+
+        function getName(name) {
+            document.getElementById("rawname").value = name;
+            document.getElementById("student").innerHTML = "You are judging " + name + "\'s presentation.";
+        }
+
+    </script>
+    </body>
+</html>

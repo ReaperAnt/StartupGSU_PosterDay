@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>
+        GSU Poster - Dashboard
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/dashboard.css') }}">
+    <link rel="icon" type="image/x-icon" href="images/Panther.png">
+</head>
+
+    <body>
+        <div class="header">
+        </div>
+        <div class="container">
+            <h1>Hello {{session.name}}<br>Welcome to your Dashboard</h1>
+        </div>
+        <div class="container2">
+            <div class="portion1"><a href="{{ url_for('student_homepage_scores') }}"><button type="button">Top Scores</button></a></div>
+            <div class="portion2"><a href="{{ url_for('student_homepage_rubric') }}"><button type="button">Rubric</button></a></div>
+            <div class="portion3"><a href="{{ url_for('home') }}"><button type="button">Logout</button></a></div>
+        </div>
+
+        <div class="container3">
+            <div class="instructions">
+                <h3>Submit a picture of your poster below.</h3>
+            </div>
+            <div class="submit">
+                <label class="UploadFile">
+                    <input type="file"/>
+                </label>
+                <button type="submit" name="button" id="button"> Submit</button>
+            </div>
+        </div>
+    </body>
+</html>

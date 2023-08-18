@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>GSU Poster - Register</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename= 'images/Panther.png') }}">
+	</head>
+
+	<body>
+        <img src="static/images/logo.png" alt="logo" width="200" height="200">
+		<div class="container">
+			<div class="container2">
+				<form method="POST" action="">
+
+					<h2>
+						I am a:<br>
+						<input type="radio" id="student" name="occupation" value="0">
+						<label for="student">Student</label>
+						<input type="radio" id="judge" name="occupation" value="1">
+						<label for="judge">Judge</label><br>
+
+						<label for="firstname">First Name</label><br>
+						<input type="text" id="firstname" name="firstname" placeholder="John"><br>
+
+						<label for = "lastname">Last Name</label><br>
+						<input type="text" id="lastname" name="lastname" placeholder="Wick"><br>
+
+						<label for = "email">Email Address</label><br>
+						<input type="text" id="email" name="email" placeholder="sample@student.gsu.edu"><br>
+
+						<label for = "pword">Password</label><br>
+						<input type="password" id="pword" name="pword" placeholder="Create a Password" onkeyup='confirmPword();'><br>
+
+						<label for = "confirm">Confirm Password</label><br>
+						<input type="password" id="confirm" name="confirm" placeholder="Confirm Password" onkeyup='confirmPword();'>
+					</h2>
+					<br><span id="msg"></span><br><br>
+					<button type="submit">Create new account</button>
+
+				</form>
+			</div>
+		</div>
+	</body>
+
+<script>
+function confirmPword() {
+	document.getElementById("msg").style.color = "red";
+	if(document.getElementById("pword").value === document.getElementById("confirm").value) {
+		if(document.getElementById("pword").value.length < 8) {
+			document.getElementById("msg").innerHTML = "Your password must be at least 8 characters long."
+		} else {
+			document.getElementById("msg").style.color = "green";
+			document.getElementById("msg").innerHTML = "Passwords match!"
+		}
+	} else {
+		document.getElementById("msg").innerHTML = "Passwords do not match."
+	}
+}
+</script>
+
+</html>

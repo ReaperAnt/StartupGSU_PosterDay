@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>
+        GSU Poster - Rubric
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename= 'images/Panther.png') }}">
+</head>
+
+    <body>
+        <div class="container">
+            <h1>These are the grading criteria that will be followed.</h1>
+        </div>
+        <div class = "Rubric">
+            <table>
+                <tr>
+                    <th><h3>Excellent</h3></th>
+                    <th><h3>Good</h3></th>
+                    <th><h3>Neutral</h3></th>
+                    <th><h3>Bad</h3></th>
+                    <th><h3>Very Bad</h3></th>
+                </tr>
+                <tr>
+                    <td>Student was able to answer all questions presented by the judge.</td>
+                    <td>Most questions were answered well enough.</td>
+                    <td>Some questions answered perfectly, others not.</td>
+                    <td>Student was very vague with their answers.</td>
+                    <td>Student could not provide answers or explanation.s</td>
+                </tr>
+                <tr>
+                    <td>Student gave an interactive and engaging presentation.</td>
+                    <td>Students presentation was great with very few mistakes.</td>
+                    <td>Presentation was good, but missing many minor details.</td>
+                    <td>Student was not energetic enough or missing info.</td>
+                    <td>Student hardly put in effort, read off a paper/slides verbatim.</td>
+                </tr>
+                <tr>
+                    <td>Student's content was correct.</td>
+                    <td>Very few errors with their knowledge/content/idea.</td>
+                    <td>Student had major details correct.</td>
+                    <td>Content/Info was partially correct.</td>
+                    <td>Content/Info was outdated or wrong.</td>
+                </tr>
+                <tr>
+                    <td>Student's poster was creative, rich, and colorful.</td>
+                    <td>Poster was organized and pretty, but not unique.</td>
+                    <td>Poster was not appealing, but provided key details/info.</td>
+                    <td>Poster was not appealing or organized, but had most necessary info.</td>
+                    <td>Poster was hard to read and bland.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="container2">
+            <div class="portion1"><button type="button" onclick="history.back()">Back to your Dashboard</button></div>
+            <div class="portion3"><a href="{{ url_for('home') }}"><button type="button">Logout</button></a></div>
+        </div>
+    </body>
+</html>
